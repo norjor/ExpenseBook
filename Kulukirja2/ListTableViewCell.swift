@@ -11,7 +11,7 @@ import UIKit
 class ListTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var expenseNameAsButtonTitle: UIButton!
+    @IBOutlet weak var expenseItemAsButtonTitle: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

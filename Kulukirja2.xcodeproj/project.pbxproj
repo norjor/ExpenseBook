@@ -20,14 +20,13 @@
 		777764011C2C7CAB006B221A /* ExpenseTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777764001C2C7CAB006B221A /* ExpenseTypeTableViewCell.swift */; };
 		77777DF91C3BFFC9001243CB /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77777DF81C3BFFC9001243CB /* ListTableViewCell.swift */; };
 		77778F8B1C368160004FB1AF /* SettingsFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77778F8A1C368160004FB1AF /* SettingsFooterTableViewCell.swift */; };
-		777CCBB31C32A68D00E0D055 /* ListFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777CCBB21C32A68D00E0D055 /* ListFooterTableViewCell.swift */; };
-		7783A9B41C418DE20024C7E1 /* ListHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7783A9B31C418DE20024C7E1 /* ListHeaderTableViewCell.swift */; };
 		778B839A1C34289700BC13EF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778B83991C34289700BC13EF /* SettingsTableViewController.swift */; };
 		778B839C1C3449FB00BC13EF /* SettingsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778B839B1C3449FB00BC13EF /* SettingsHeaderTableViewCell.swift */; };
 		778CE16F1C306DFC00ECC9C6 /* ExpenseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CE16E1C306DFB00ECC9C6 /* ExpenseClass.swift */; };
+		77A4684D1C4E8EA200704DEA /* ListTotalExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A4684C1C4E8EA100704DEA /* ListTotalExpenseView.swift */; };
+		77A4684F1C4EAFFD00704DEA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A4684E1C4EAFFD00704DEA /* ListViewController.swift */; };
 		77B7196A1C4A6CC800C28EF9 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */; };
 		77BDF45E1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */; };
-		77BDF4621C2D7B580079C74A /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BDF4611C2D7B580079C74A /* ListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,14 +89,13 @@
 		777764001C2C7CAB006B221A /* ExpenseTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTypeTableViewCell.swift; sourceTree = "<group>"; };
 		77777DF81C3BFFC9001243CB /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		77778F8A1C368160004FB1AF /* SettingsFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFooterTableViewCell.swift; sourceTree = "<group>"; };
-		777CCBB21C32A68D00E0D055 /* ListFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFooterTableViewCell.swift; sourceTree = "<group>"; };
-		7783A9B31C418DE20024C7E1 /* ListHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		778B83991C34289700BC13EF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		778B839B1C3449FB00BC13EF /* SettingsHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		778CE16E1C306DFB00ECC9C6 /* ExpenseClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseClass.swift; sourceTree = "<group>"; };
+		77A4684C1C4E8EA100704DEA /* ListTotalExpenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTotalExpenseView.swift; sourceTree = "<group>"; };
+		77A4684E1C4EAFFD00704DEA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTypeFooterTableViewCell.swift; sourceTree = "<group>"; };
-		77BDF4611C2D7B580079C74A /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,10 +156,9 @@
 		77777DFA1C3C1EB5001243CB /* List expense */ = {
 			isa = PBXGroup;
 			children = (
-				77BDF4611C2D7B580079C74A /* ListTableViewController.swift */,
-				7783A9B31C418DE20024C7E1 /* ListHeaderTableViewCell.swift */,
+				77A4684E1C4EAFFD00704DEA /* ListViewController.swift */,
 				77777DF81C3BFFC9001243CB /* ListTableViewCell.swift */,
-				777CCBB21C32A68D00E0D055 /* ListFooterTableViewCell.swift */,
+				77A4684C1C4E8EA100704DEA /* ListTotalExpenseView.swift */,
 			);
 			name = "List expense";
 			sourceTree = "<group>";
@@ -301,11 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A4684F1C4EAFFD00704DEA /* ListViewController.swift in Sources */,
 				777763EB1C2C760A006B221A /* AppDelegate.swift in Sources */,
 				776976451C35C5D3008A047E /* SettingsTableViewCell.swift in Sources */,
-				777CCBB31C32A68D00E0D055 /* ListFooterTableViewCell.swift in Sources */,
 				777763FD1C2C780A006B221A /* AddExpenseViewController.swift in Sources */,
-				7783A9B41C418DE20024C7E1 /* ListHeaderTableViewCell.swift in Sources */,
 				77778F8B1C368160004FB1AF /* SettingsFooterTableViewCell.swift in Sources */,
 				778CE16F1C306DFC00ECC9C6 /* ExpenseClass.swift in Sources */,
 				77BDF45E1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift in Sources */,
@@ -313,10 +309,10 @@
 				77B7196A1C4A6CC800C28EF9 /* ChartsViewController.swift in Sources */,
 				778B839C1C3449FB00BC13EF /* SettingsHeaderTableViewCell.swift in Sources */,
 				778B839A1C34289700BC13EF /* SettingsTableViewController.swift in Sources */,
+				77A4684D1C4E8EA200704DEA /* ListTotalExpenseView.swift in Sources */,
 				776478451C392138000D44B4 /* SettingsSelectionViewController.swift in Sources */,
 				777763FF1C2C7A68006B221A /* ExpenseTypeTableViewController.swift in Sources */,
 				777764011C2C7CAB006B221A /* ExpenseTypeTableViewCell.swift in Sources */,
-				77BDF4621C2D7B580079C74A /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
