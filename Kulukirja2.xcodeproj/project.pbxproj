@@ -27,6 +27,7 @@
 		77A4684F1C4EAFFD00704DEA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A4684E1C4EAFFD00704DEA /* ListViewController.swift */; };
 		77B7196A1C4A6CC800C28EF9 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */; };
 		77BDF45E1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */; };
+		77CCAD251C56465700BB9442 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CCAD241C56465700BB9442 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		77A4684E1C4EAFFD00704DEA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTypeFooterTableViewCell.swift; sourceTree = "<group>"; };
+		77CCAD241C56465700BB9442 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				777763EA1C2C760A006B221A /* AppDelegate.swift */,
+				77CCAD241C56465700BB9442 /* Utilities.swift */,
 				777763EE1C2C760A006B221A /* Main.storyboard */,
 				777763F31C2C760A006B221A /* LaunchScreen.storyboard */,
 				777763F61C2C760A006B221A /* Info.plist */,
@@ -304,6 +307,7 @@
 				777763FD1C2C780A006B221A /* AddExpenseViewController.swift in Sources */,
 				77778F8B1C368160004FB1AF /* SettingsFooterTableViewCell.swift in Sources */,
 				778CE16F1C306DFC00ECC9C6 /* ExpenseClass.swift in Sources */,
+				77CCAD251C56465700BB9442 /* Utilities.swift in Sources */,
 				77BDF45E1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift in Sources */,
 				77777DF91C3BFFC9001243CB /* ListTableViewCell.swift in Sources */,
 				77B7196A1C4A6CC800C28EF9 /* ChartsViewController.swift in Sources */,

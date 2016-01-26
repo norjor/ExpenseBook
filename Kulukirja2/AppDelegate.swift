@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let retrieved = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? [ExpenseClass] {
             
 //            for index in 0..<retrieved.count {
-//                let reco = String(format: "retrieved: %@  %6.2f  %@", arguments:[
+//                let reco = String(format: "retrieved: %@ %@  %6.2f  %@", arguments:[
+//                    retrieved[index].uniqueKey,
 //                    retrieved[index].date,
 //                    retrieved[index].expenseValue,
 //                    retrieved[index].expenseType

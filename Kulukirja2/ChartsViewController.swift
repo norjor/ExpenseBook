@@ -33,6 +33,12 @@ import Charts
 
 
 class ChartsViewController: UIViewController, ChartViewDelegate {
+    
+    // instance of utility class for accessing some utility functions
+    var myUtilities = Utilities()
+    
+    // chart selection between Pie and Bar, Pie as default
+    var selectedChart = "Pie"
 
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var barChartView: BarChartView!
@@ -41,26 +47,38 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
     
     // Segmented control to select between Pie and Bar chart view
     @IBAction func ChangeChart(sender: UISegmentedControl) {
+        
         switch ChartSegmentedControl.selectedSegmentIndex {
         case 0:
-            barChartView.hidden = true
-            pieChartView.hidden = false
-            pieChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .EaseInCirc)
+            // draw Pie chart
+            selectedChart = "Pie"
+            filterAndDrawChart(selectedChart)
         case 1:
-            pieChartView.hidden = true
-            barChartView.hidden = false
-            barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .Linear)
+            // draw Bar chart
+            selectedChart = "Bar"
+            filterAndDrawChart(selectedChart)
         default:
             break
         }
     }
     
+    @IBOutlet weak var MonthButton: UIButton!
+    
+    @IBAction func PrevButton(sender: UIButton) {
+        MyGlobalVariables.monthAndYearSelection = myUtilities.changeMonth(MonthButton.titleForState(.Normal)!, changeByValue: -1)
+        filterAndDrawChart(selectedChart)
+    }
+    
+    @IBAction func NextButton(sender: UIButton) {
+        MyGlobalVariables.monthAndYearSelection = myUtilities.changeMonth(MonthButton.titleForState(.Normal)!, changeByValue: 1)
+        filterAndDrawChart(selectedChart)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        // ChartViewDelegate protocal provides tapping actions,
+        // Future option... ChartViewDelegate protocal provides tapping actions on charts,
         // see chartValueSelected() below
         pieChartView.delegate = self
         barChartView.delegate = self
@@ -69,16 +87,52 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
+        // draw Pie chart as default
+        filterAndDrawChart(selectedChart)
+        
+        // highlight Pie segment in segmented control
+        ChartSegmentedControl.selectedSegmentIndex = 0
+    }
+    
+    //
+    // filter expenses and draw a chart of given type
+    //
+    func filterAndDrawChart(chart : String) {
+        
+        // show selected month and year
+        MonthButton.setTitle(MyGlobalVariables.monthAndYearSelection, forState: UIControlState.Normal)
+        
+        // filter from all expenses according to month and year
+        MyGlobalVariables.filteredArrayOfExpenses =  MyGlobalVariables.myArrayOfExpenses.filter(myUtilities.isMonthAndYearSame)
+        
+        // hide chart views if no expenses
+        if MyGlobalVariables.filteredArrayOfExpenses.isEmpty {
+            pieChartView.hidden = true
+            barChartView.hidden = true
+        }
+        else {
+            drawChart(chart)
+        }
+        
+        // show 'No expenses' text if there are no expenses
+        myUtilities.showNoExpenses(self.view)
+    }
+    
+    //
+    // draw chart of given type
+    //
+    func drawChart(chart : String) {
+        
         // expenses by expense types
         var expensesByType = [String : Double]()
         var types : [String] = []
         var typeSums : [Double] = []
-        
+    
         // sum expenses for each type into dictionary
-        for item in MyGlobalVariables.myArrayOfExpenses {
+        for item in MyGlobalVariables.filteredArrayOfExpenses {
             
-            if let previousSum = expensesByType[item.expenseType] {
-                expensesByType[item.expenseType] = previousSum + Double(item.expenseValue)
+            if let totalSum = expensesByType[item.expenseType] {
+                expensesByType[item.expenseType] = totalSum + Double(item.expenseValue)
             } else {
                 expensesByType[item.expenseType] = Double(item.expenseValue)
             }
@@ -90,20 +144,27 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
             typeSums.append(value)
         }
         
-        // draw charts of given types and sums
-        setPieChart(types, values: typeSums)
-        setBarChart(types, values: typeSums)
-        
-        // default order of charts in the beginning
-        ChartSegmentedControl.selectedSegmentIndex = 0
-        barChartView.hidden = true
-        pieChartView.hidden = false
-        pieChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .EaseInCirc)
+        if chart == "Pie" {
+            // draw charts of given types and sums
+            setPieChart(types, values: typeSums)
+            
+            barChartView.hidden = true
+            pieChartView.hidden = false
+            pieChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
 
+        }
+        else {
+            setBarChart(types, values: typeSums)
+            
+            pieChartView.hidden = true
+            barChartView.hidden = false
+            barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+        }
     }
     
     //
     // Function for drawing Pie chart
+    //  arrays of expense types and sums by types as arguments
     //
     func setPieChart(dataPoints: [String], values: [Double]) {
         
@@ -129,7 +190,6 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
     // Function for drawing Bar chart
     //
     func setBarChart(dataPoints: [String], values: [Double]) {
-        
         
         barChartView.noDataText = "You need to provide data for the chart."
         

@@ -22,10 +22,17 @@ struct MyGlobalVariables {
     // total sum of expenses
     static var expenseTotal : Float = 0.0
     
+    // filtered array of expenses
+    static var filteredArrayOfExpenses = [ExpenseClass]()
+    
+    static var monthAndYearSelection = "Month"
+    
 }
 
 
 class AddExpenseViewController: UIViewController {
+    
+    var myUtilities = Utilities()
 
     // MARK: Properties
     
@@ -167,40 +174,32 @@ class AddExpenseViewController: UIViewController {
         return true
     }
     
-
-    //
-    // function for current date, used in expense record
-    //
-    func timeStamp() -> String {
-        // get the current date and time
-        let currentDateTime = NSDate()
-        
-        // initialize the date formatter and set the style
-        let formatter = NSDateFormatter()
-        //formatter.timeStyle = NSDateFormatterStyle.ShortStyle  //time could be added also
-        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        
-        // get the date time String from the date object
-        return formatter.stringFromDate(currentDateTime)
-    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Select current month and year for filtering option at startup
+        MyGlobalVariables.monthAndYearSelection = myUtilities.getCurrentDate("MMM yyyy")
 
-        // expense record is created (date,value,type), when we return from 
+
+        // expense record is created (date,value,type), when we return from
         // ExpenseTypeTableViewController
-
+        
         if (dataFromExpenseTypeTabViewcontroller != nil) {
             
-            let expenseRecord = ExpenseClass(date: timeStamp(),
+            let uniqId = myUtilities.randomStringWithLength(5)
+            
+            let expenseRecord = ExpenseClass(uniqueKey: uniqId,
+                                             date: myUtilities.getCurrentDate("MMM dd yyyy"),
                                              expenseValue: MyGlobalVariables.expenseValue,
                                              expenseType: dataFromExpenseTypeTabViewcontroller!)
             
             // new record is inserted into expense array as first element
             MyGlobalVariables.myArrayOfExpenses.insert(expenseRecord, atIndex: 0)
+            
 
-//            let form = String(format: "add  %@\t%7.2f\t%@ ", expenseRecord.date, expenseRecord.expenseValue, expenseRecord.expenseType)
+//            let form = String(format: "add %@ %@\t%7.2f\t%@ ", expenseRecord.uniqueKey, expenseRecord.date, expenseRecord.expenseValue, expenseRecord.expenseType)
 //            print(form)
         }
      }
@@ -210,16 +209,4 @@ class AddExpenseViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
