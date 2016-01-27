@@ -136,11 +136,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("ListItemId", forIndexPath: indexPath) as! ListTableViewCell
         
         // Configure the cell...
-        // build expense record
-        let expense = String(format: "%@              %@                        %@", arguments: [
-            MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].date,
-            String(format: "%6.2f", MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].expenseValue),
-            MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].expenseType])
         
 //        let text1 = MyGlobalVariables.myArrayOfExpenses[indexPath.row].date
 //        let text2 = String(format: "%8.2f", MyGlobalVariables.myArrayOfExpenses[indexPath.row].expenseValue)
@@ -150,6 +145,19 @@ class ListViewController: UIViewController, UITableViewDataSource {
 //            text2 +
 //            String(format: "%25s",(text3 as NSString).UTF8String)
         
+        var date = MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].date
+        let dateLen = date.characters.count
+        let datePadding : Array<Character> = Array(count: 22 - dateLen, repeatedValue: " ")
+        date = date + String(datePadding)
+        
+        let expenseValue = String(format: "%8.2f", MyGlobalVariables.myArrayOfExpenses[indexPath.row].expenseValue)
+        
+        var expenseType = MyGlobalVariables.myArrayOfExpenses[indexPath.row].expenseType
+        let expenseTypeLen = expenseType.characters.count
+        let typePadding : Array<Character> = Array(count: 24 - expenseTypeLen, repeatedValue: " ")
+        expenseType = String(typePadding) + expenseType
+
+        let expense = date + expenseValue + expenseType
         
         // show expense record in cell's button title
         cell.expenseItemAsButtonTitle.setTitle(expense, forState: UIControlState.Normal)
