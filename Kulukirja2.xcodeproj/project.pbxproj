@@ -28,6 +28,7 @@
 		77B7196A1C4A6CC800C28EF9 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */; };
 		77BDF45E1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */; };
 		77CCAD251C56465700BB9442 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CCAD241C56465700BB9442 /* Utilities.swift */; };
+		77CD93771C5E06F800840FE5 /* expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CD93761C5E06F800840FE5 /* expenses.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		77B719691C4A6CC800C28EF9 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		77BDF45D1C2D3E5F0079C74A /* ExpenseTypeFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTypeFooterTableViewCell.swift; sourceTree = "<group>"; };
 		77CCAD241C56465700BB9442 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		77CD93761C5E06F800840FE5 /* expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = expenses.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		77777DFB1C3C1EE4001243CB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				77CD93761C5E06F800840FE5 /* expenses.json */,
 				776478441C392138000D44B4 /* SettingsSelectionViewController.swift */,
 				778B83991C34289700BC13EF /* SettingsTableViewController.swift */,
 				778B839B1C3449FB00BC13EF /* SettingsHeaderTableViewCell.swift */,
@@ -288,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77CD93771C5E06F800840FE5 /* expenses.json in Resources */,
 				777763F51C2C760A006B221A /* LaunchScreen.storyboard in Resources */,
 				777763F21C2C760A006B221A /* Assets.xcassets in Resources */,
 				777763F01C2C760A006B221A /* Main.storyboard in Resources */,

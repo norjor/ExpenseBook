@@ -1,0 +1,17 @@
+{
+  "expense":[
+     {
+       "uniqueKey": "abcdef",
+       "date": "Jan 30 2016",
+       "expenseValue": "11.20",
+       "expenseType": "ruoka"
+     },
+     {
+        "uniqueKey": "12345",
+        "date": "Jan 31 2016",
+        "expenseValue": "555.50",
+        "expenseType": "auto"
+     }
+  ]
+}
+

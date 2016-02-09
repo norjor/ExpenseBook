@@ -62,13 +62,16 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         }
     }
     
+    // Shows current/selected month (and year)
     @IBOutlet weak var MonthButton: UIButton!
     
+    // Shift to previous month
     @IBAction func PrevButton(sender: UIButton) {
         MyGlobalVariables.monthAndYearSelection = myUtilities.changeMonth(MonthButton.titleForState(.Normal)!, changeByValue: -1)
         filterAndDrawChart(selectedChart)
     }
     
+    // Shift to next month
     @IBAction func NextButton(sender: UIButton) {
         MyGlobalVariables.monthAndYearSelection = myUtilities.changeMonth(MonthButton.titleForState(.Normal)!, changeByValue: 1)
         filterAndDrawChart(selectedChart)
