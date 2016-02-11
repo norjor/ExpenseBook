@@ -41,20 +41,34 @@ class SettingsSelectionViewController: UIViewController {
         
         let alertController = UIAlertController(title: title, message: "Are you sure you want to import expenses.json?", preferredStyle:UIAlertControllerStyle.Alert)
         
-        // add Yes-button to remove all expenses
+        // add Yes-button for importing expenses
         let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
             
-            if let path = NSBundle.mainBundle().pathForResource("expenses", ofType: "json") {
+            let urlString = "http://jono56.arkku.net/expenses.json"
+            let url = NSURL(string: urlString)
+
+            let request = NSURLRequest(URL: url!)
+            
+            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: config)
+            
+            let dataTask = session.dataTaskWithRequest(request) {
+                (let data: NSData?, let response: NSURLResponse?, let error: NSError?) -> Void in
                 
-                do {
-                    let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                    
+                guard let httpResponse = response as? NSHTTPURLResponse, receivedData = data
+                    else {
+                        print("error: not a valid http response")
+                        return
+                }
+                // It must be now parsed according to rules if response is OK (200)
+                print(httpResponse.statusCode)
+                if (httpResponse.statusCode == 200)
+                {
+                    // The JSON is be parsed out here and its contents used
                     do {
-                        let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                        let jsonResult = try NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.MutableContainers) as! [NSDictionary]
                         
-                        if let expenses = jsonResult["expense"] as? [NSDictionary] {
-                            
-                            for expense in expenses {
+                            for expense in jsonResult {
                                 
                                 let uniqId = expense["uniqueKey"] as! String
                                 let date = expense["date"] as! String
@@ -69,10 +83,19 @@ class SettingsSelectionViewController: UIViewController {
                                 // new record is inserted into expense array as first element
                                 MyGlobalVariables.myArrayOfExpenses.insert(expenseRecord, atIndex: 0)
                             }
-                        }
                     } catch {print("jsonResult: jsonData serialzation failed \(error)")}
-                } catch {print("jsonData: file fetch to NSData failed \(error)")}
+                
+                    
+                    //dispatch_async(dispatch_get_main_queue()) {} // tarvitaanko ja mihin ?????
+
+                }
+                else {
+                    print("Error in HTTP Response")
+                }
+                
             }
+            // start actual asynchronous task
+            dataTask.resume()
         }
         
         alertController.addAction(OKAction)
@@ -86,6 +109,59 @@ class SettingsSelectionViewController: UIViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+
+//    @IBAction func importFromJson(sender: UIButton) {
+//        
+//        let alertController = UIAlertController(title: title, message: "Are you sure you want to import expenses.json?", preferredStyle:UIAlertControllerStyle.Alert)
+//        
+//        // add Yes-button to remove all expenses
+//        let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
+//            
+//            if let path = NSBundle.mainBundle().pathForResource("expenses", ofType: "json") {
+//                
+//                do {
+//                    let jsonData = try NSData(contentsOfFile: "http://jono56.arkku.net/expenses.json", options: NSDataReadingOptions.DataReadingMappedIfSafe)
+//                    
+//                    //try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+//                    
+//                    do {
+//                        let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//                        
+//                        if let expenses = jsonResult["expense"] as? [NSDictionary] {
+//                            
+//                            for expense in expenses {
+//                                
+//                                let uniqId = expense["uniqueKey"] as! String
+//                                let date = expense["date"] as! String
+//                                let value: Float = (expense["expenseValue"] as! NSString).floatValue
+//                                let type = expense["expenseType"] as! String
+//                                
+//                                let expenseRecord = ExpenseClass(uniqueKey: uniqId,
+//                                    date: date,
+//                                    expenseValue: value,
+//                                    expenseType: type)
+//                                
+//                                // new record is inserted into expense array as first element
+//                                MyGlobalVariables.myArrayOfExpenses.insert(expenseRecord, atIndex: 0)
+//                            }
+//                        }
+//                    } catch {print("jsonResult: jsonData serialzation failed \(error)")}
+//                } catch {print("jsonData: file fetch to NSData failed \(error)")}
+//            }
+//        }
+//        
+//        alertController.addAction(OKAction)
+//        
+//        // add No-button to cancel action
+//        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action) in
+//            // do nothing
+//        }
+//        
+//        alertController.addAction(cancelAction)
+//        
+//        self.presentViewController(alertController, animated: true, completion: nil)
+//    }
+    
     
     
     override func viewDidLoad() {
@@ -93,45 +169,6 @@ class SettingsSelectionViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        
-//        
-//        var arr: [[String:String]] = [[:]]
-//        var dic: [String:String] = [:]
-//        
-//        do {
-//            
-//            dic["test1"] = "31.1.16"
-//            dic["value"] = "11.10"
-//            dic["type"] = "ruoka"
-//            
-//            arr.append(dic)
-//            
-//            let jsonData = try NSJSONSerialization.dataWithJSONObject(arr, options: NSJSONWritingOptions.PrettyPrinted)
-//            let str = String(data: jsonData, encoding: NSUTF8StringEncoding)
-//            
-//            print(str)
-//            
-//            let filePath = documentsDirectory().stringByAppendingPathComponent("expenses2.json")
-//            
-//            // save myArrayOfExpenses to file
-//            NSKeyedArchiver.archiveRootObject(dic, toFile: filePath)
-//            
-//            print(filePath)
-//            
-//            
-//        } catch let error as NSError {
-//            print(error)
-//        }
-        
-        
-        
-    }
-    
-    func documentsDirectory() -> NSString {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentDirectory = paths[0] as String
-        
-        return documentDirectory
     }
     
     override func didReceiveMemoryWarning() {
