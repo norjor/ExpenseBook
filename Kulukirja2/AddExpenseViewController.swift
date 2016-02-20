@@ -180,7 +180,7 @@ class AddExpenseViewController: UIViewController {
         super.viewDidLoad()
         
         // Select current month and year for filtering option at startup
-        MyGlobalVariables.monthAndYearSelection = myUtilities.getCurrentDate("MMM yyyy")
+        MyGlobalVariables.monthAndYearSelection = myUtilities.getCurrentDate("MM yyyy")
 
 
         // expense record is created (date,value,type), when we return from
@@ -191,7 +191,7 @@ class AddExpenseViewController: UIViewController {
             let uniqId = myUtilities.randomStringWithLength(5)
             
             let expenseRecord = ExpenseClass(uniqueKey: uniqId,
-                                             date: myUtilities.getCurrentDate("MMM dd yyyy"),
+                                             date: myUtilities.getCurrentDate("dd MM yyyy"),
                                              expenseValue: MyGlobalVariables.expenseValue,
                                              expenseType: dataFromExpenseTypeTabViewcontroller!)
             

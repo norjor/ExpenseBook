@@ -145,16 +145,17 @@ class ListViewController: UIViewController, UITableViewDataSource {
 //            text2 +
 //            String(format: "%25s",(text3 as NSString).UTF8String)
         
+        
         var date = MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].date
         let dateLen = date.characters.count
-        let datePadding : Array<Character> = Array(count: 22 - dateLen, repeatedValue: " ")
+        let datePadding : Array<Character> = Array(count: 16 - dateLen, repeatedValue: " ")
         date = date + String(datePadding)
         
         let expenseValue = String(format: "%8.2f", MyGlobalVariables.myArrayOfExpenses[indexPath.row].expenseValue)
         
         var expenseType = MyGlobalVariables.myArrayOfExpenses[indexPath.row].expenseType
         let expenseTypeLen = expenseType.characters.count
-        let typePadding : Array<Character> = Array(count: 24 - expenseTypeLen, repeatedValue: " ")
+        let typePadding : Array<Character> = Array(count: 20 - expenseTypeLen, repeatedValue: " ")
         expenseType = String(typePadding) + expenseType
 
         let expense = date + expenseValue + expenseType
@@ -169,3 +170,4 @@ class ListViewController: UIViewController, UITableViewDataSource {
         return cell
     }
 }
+

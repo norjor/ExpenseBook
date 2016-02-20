@@ -29,7 +29,7 @@ class Utilities {
 
     //
     // function for current date
-    //  date format given as argument e.g. "MMM dd yyyy"
+    //  date format given as argument e.g. "dd MM yyyy"
     //
     func getCurrentDate(dateFormat : String) -> String {
         
@@ -51,7 +51,7 @@ class Utilities {
     func changeMonth (date : String, changeByValue : Int) -> String {
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMM yyyy"
+        formatter.dateFormat = "MM yyyy"
         let oldDate = formatter.dateFromString(date)
         let calendar = NSCalendar.currentCalendar()
         let newDate = calendar.dateByAddingUnit(.Month, value: changeByValue, toDate: oldDate!, options: [])
@@ -66,7 +66,7 @@ class Utilities {
         
         let expenseDate = expense.date
         
-        // pick year and month out of filter date "MMM yyyy"
+        // pick year and month out of filter date "MM yyyy"
         let month = MyGlobalVariables.monthAndYearSelection.substringWithRange(Range<String.Index>(start: MyGlobalVariables.monthAndYearSelection.startIndex, end: MyGlobalVariables.monthAndYearSelection.startIndex.advancedBy(3)))
         
         let year = MyGlobalVariables.monthAndYearSelection.substringWithRange(Range<String.Index>(start: MyGlobalVariables.monthAndYearSelection.endIndex.advancedBy(-4), end: MyGlobalVariables.monthAndYearSelection.endIndex))
