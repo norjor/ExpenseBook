@@ -90,6 +90,7 @@ class Utilities {
             let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
             label.center = CGPointMake(myView.bounds.width/2, myView.bounds.height/2)
             label.textAlignment = NSTextAlignment.Center
+            label.textColor = UIColor.whiteColor()
             label.text = "No expenses"
             label.tag = 1000
             myView.addSubview(label)

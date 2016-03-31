@@ -166,6 +166,7 @@ class ListViewController: UIViewController, UITableViewDataSource {
         // this tag is used as index to point the expense in myArrayOfExpenses table
         // when 'removeExpenseOnButtonPress' button is pressed in order to remove the expense
         cell.expenseItemAsButtonTitle.accessibilityIdentifier = MyGlobalVariables.filteredArrayOfExpenses[indexPath.row].uniqueKey
+        cell.expenseItemAsButtonTitle.backgroundColor = UIColor.blackColor()
         
         return cell
     }

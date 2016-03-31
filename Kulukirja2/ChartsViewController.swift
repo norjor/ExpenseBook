@@ -85,6 +85,8 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         // see chartValueSelected() below
         pieChartView.delegate = self
         barChartView.delegate = self
+        
+        self.MonthButton.backgroundColor = UIColor.blackColor()
     }
     
     
@@ -215,7 +217,7 @@ class ChartsViewController: UIViewController, ChartViewDelegate {
         
         barChartView.xAxis.labelPosition = .Bottom
         
-        barChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        //barChartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
     }
     
     //

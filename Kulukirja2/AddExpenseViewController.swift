@@ -173,11 +173,13 @@ class AddExpenseViewController: UIViewController {
         }
         return true
     }
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.blackColor()
+        //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
         
         // Select current month and year for filtering option at startup
         MyGlobalVariables.monthAndYearSelection = myUtilities.getCurrentDate("MM yyyy")

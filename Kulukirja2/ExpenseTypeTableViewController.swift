@@ -14,7 +14,7 @@ class ExpenseTypeTableViewController: UITableViewController {
     
     // outlet for re-loading type list
     @IBOutlet var typesReload: UITableView!
-    
+        
     //
     // addNewTypeButton function lets you give new expense type in alert controller view
     // - function is triggered by 'Add new type' button
@@ -54,12 +54,12 @@ class ExpenseTypeTableViewController: UITableViewController {
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,6 +92,8 @@ class ExpenseTypeTableViewController: UITableViewController {
         // this tag is used as index to get type name from myTypes table later
         // when type button is pressed and segue to AddExpenseViewController starts
         cell.typeNameButton.tag = indexPath.row
+        
+        cell.typeNameButton.backgroundColor = UIColor.blackColor()
 
         return cell
     }
